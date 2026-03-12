@@ -3,216 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBINGOD TRADE INC. IM/EX | Master Ecosystem & Sovereign Registry</title>
+    <title>IBINGOD TRADE INC. IM/EX | Sovereign Command</title>
     <style>
         :root {
             --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.6);
-            --bg: #020202;
-            --card-bg: rgba(15, 15, 15, 0.95);
-            --border: #2a2a2a;
+            --gold-glow: rgba(212, 175, 55, 0.5);
+            --bg: #000000;
+            --card-bg: #0a0a0a;
         }
 
         body {
             background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            color: #fff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
-            line-height: 1.6;
+            padding: 0;
         }
 
-        /* Hero & Logo */
+        /* --- FIXED NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 70px;
+            background: rgba(0,0,0,0.95);
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .nav-links a { color: #fff; text-decoration: none; margin-right: 30px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+        
+        .nav-auth { display: flex; align-items: center; gap: 20px; }
+        .btn-reg { background: var(--gold); color: #000; padding: 8px 15px; font-weight: bold; text-decoration: none; }
+        .cart-icon { font-size: 20px; color: var(--gold); cursor: pointer; }
+
+        /* --- HEADER --- */
         header {
-            height: 90vh;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            padding-top: 70px;
             background: radial-gradient(circle at center, #111 0%, #000 100%);
-            border-bottom: 2px solid var(--gold);
-            position: relative;
         }
 
         .logo-main {
-            max-width: 850px;
-            width: 90%;
-            cursor: pointer;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 850px; width: 90%;
             filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+            transition: 0.5s;
         }
 
         .logo-main:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 40px var(--gold-glow));
+            filter: drop-shadow(0 0 35px var(--gold-glow));
+            transform: scale(1.01);
         }
 
-        /* Registry Section */
-        .container { max-width: 1400px; margin: -80px auto 50px auto; padding: 20px; position: relative; z-index: 10; }
-        
-        .search-box {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            margin-bottom: 60px;
-        }
-
-        .search-input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--gold);
-            color: var(--gold);
-            font-size: 1.8rem;
-            outline: none;
-            padding: 10px;
-            font-weight: 200;
-        }
+        /* --- THE DIRECTORY REGISTRY --- */
+        .container { max-width: 1300px; margin: auto; padding: 60px 20px; }
+        .registry-title { border-left: 5px solid var(--gold); padding-left: 20px; margin-bottom: 40px; letter-spacing: 3px; }
 
         .registry-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .link-card {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 12px;
-            transition: 0.4s all;
+            border: 1px solid #1a1a1a;
+            padding: 25px;
+            transition: 0.3s;
+            position: relative;
         }
 
         .link-card:hover {
             border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
         }
 
-        /* 8-Tier Service Vault */
-        #service-vault {
+        .tag { color: var(--gold); font-size: 10px; text-transform: uppercase; border: 1px solid var(--gold); padding: 2px 5px; }
+
+        /* --- THE EXPANDED SOVEREIGN TIERS (BOTTOM) --- */
+        #directives {
             background: #050505;
-            padding: 120px 20px;
-            border-top: 1px solid var(--border);
+            padding: 100px 20px;
+            border-top: 2px solid var(--gold);
         }
 
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 60px auto;
+            gap: 25px;
+            max-width: 1250px;
+            margin: auto;
         }
 
         .tier-card {
             background: #000;
-            border: 1px solid #1a1a1a;
-            padding: 40px 25px;
-            border-radius: 15px;
+            border: 1px solid #222;
+            padding: 30px;
             text-align: center;
-            transition: 0.3s;
+            transition: 0.4s;
         }
 
-        .tier-card:hover { border-color: var(--gold); background: #080808; }
-        .tier-card h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase; }
-        .tier-card .price { font-size: 2rem; display: block; margin: 15px 0; font-weight: bold; }
-        .tier-card .tagline { font-size: 0.85rem; color: #888; margin-bottom: 20px; height: 50px; }
-
-        .btn-order {
-            display: inline-block;
-            padding: 12px 25px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-            transition: 0.3s;
+        .tier-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .tier-card h4 { color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+        .price { font-size: 26px; font-weight: bold; margin: 20px 0; color: #fff; }
+        .buy-btn {
+            background: var(--gold); color: #000; padding: 12px 20px;
+            text-decoration: none; font-weight: bold; display: block;
+            margin-top: 20px; font-size: 12px;
         }
 
-        .btn-order:hover { background: var(--gold); color: #000; }
-
-        footer { padding: 80px; text-align: center; border-top: 1px solid #111; font-size: 0.75rem; color: #555; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="nav-links">
+        <a href="#directory">Registry</a>
+        <a href="#directives">Directives (Services)</a>
+        <a href="#">The Vault</a>
+        <a href="#">The Port</a>
+    </div>
+    <div class="nav-auth">
+        <a href="#" style="color: #fff; text-decoration: none; font-size: 11px;">SIGN IN</a>
+        <a href="#" class="btn-reg">REGISTER</a>
+        <span class="cart-icon">🛒</span>
+    </div>
+</nav>
+
 <header>
-    <img src="ibingodtradelogomain.png" alt="IBINGOD TRADE INC. IM/EX" class="logo-main">
-    <h1 style="font-weight: 100; letter-spacing: 12px; margin-top: 30px; font-size: 1.2rem;">SOVEREIGN MASTER ECOSYSTEM</h1>
+    <img src="ibingodtradelogomain.png" alt="IBINGOD TRADES MAIN" class="logo-main">
+    <h1 style="letter-spacing: 15px; font-weight: 200; color: var(--gold); margin-top: 40px;">SOVEREIGN HOLDER</h1>
 </header>
 
-<div class="container">
-    <div class="search-box">
-        <input type="text" id="directorySearch" class="search-input" placeholder="ACCESS GLOBAL REGISTRY...">
-    </div>
-
-    <div class="registry-grid" id="registryItems">
-        <div class="link-card" data-tags="vexilla tech health infrastructure">
-            <span style="color: var(--gold); font-size: 10px; letter-spacing: 2px;">MAIN COMMAND</span>
+<div class="container" id="directory">
+    <h2 class="registry-title">GLOBAL AFFILIATE REGISTRY</h2>
+    <div class="registry-grid">
+        <div class="link-card">
+            <span class="tag">Main Command</span>
             <h3>Vexilla AITS</h3>
-            <p style="color: #666; font-size: 14px;">Master Infrastructure Monitoring & Tech Health Auditing.</p>
-            <a href="https://nehemiahbrown007.github.io/vexilla-support/" class="btn-order">ACCESS PORTAL</a>
+            <p style="color: #777; font-size: 13px;">Infrastructure & Tech Health.</p>
+            <a href="https://nehemiahbrown007.github.io/vexilla-support/" style="color: var(--gold); text-decoration: none; font-size: 12px;">OPEN PORTAL →</a>
         </div>
-        
-        <div class="link-card" data-tags="solomon kin records media music skrmg">
-            <span style="color: var(--gold); font-size: 10px; letter-spacing: 2px;">RECORD KEEPING</span>
-            <h3>Solomon Kin Records</h3>
-            <p style="color: #666; font-size: 14px;">Media Group, Music Licensing, & Talent Management.</p>
-            <a href="https://skrs-ai.github.io/LicensingCatalog/" class="btn-order">ACCESS PORTAL</a>
         </div>
-    </div>
 </div>
 
-<section id="service-vault">
-    <h2 style="text-align: center; color: var(--gold); letter-spacing: 5px;">SOVEREIGN SERVICE DIRECTIVES</h2>
+<section id="directives">
+    <h2 style="text-align: center; color: var(--gold); letter-spacing: 5px; margin-bottom: 80px;">SOVEREIGN TIER DIRECTIVES</h2>
     <div class="tier-grid">
+        
         <div class="tier-card">
-            <h4>Originator’s Shield</h4>
-            <p class="tagline">VSSN Character Identity & Cloning Protection</p>
-            <span class="price">$499</span>
-            <a href="#" class="btn-order">SECURE IDENTITY</a>
+            <span class="tag">Identity</span>
+            <h4>The Originator’s Shield (VSSN)</h4>
+            <p style="font-size: 12px; color: #888;">Lifetime digital persona registration. Prevents AI cloning.</p>
+            <div class="price">$499</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
         </div>
+
         <div class="tier-card">
-            <h4>Bridge-Builder</h4>
-            <p class="tagline">Cultural Affiliation & Foreign Trade Verification</p>
-            <span class="price">$850</span>
-            <a href="#" class="btn-order">VERIFY HISTORY</a>
+            <span class="tag">Authorship</span>
+            <h4>The Authoritative Seal</h4>
+            <p style="font-size: 12px; color: #888;">AI Slot Method Certification. Proves legal authorship.</p>
+            <div class="price">$1,250</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
         </div>
+
         <div class="tier-card">
-            <h4>Tech-Health Audit</h4>
-            <p class="tagline">Vexilla-Certified Asset Security Scan</p>
-            <span class="price">$1,800</span>
-            <a href="#" class="btn-order">START AUDIT</a>
+            <span class="tag">Culture</span>
+            <h4>The Bridge-Builder’s Passport</h4>
+            <p style="font-size: 12px; color: #888;">Cultural affiliation & trade history verification.</p>
+            <div class="price">$850</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
         </div>
-        <div class="tier-card" style="border-color: var(--gold); box-shadow: 0 0 15px rgba(212,175,55,0.2);">
-            <h4 style="color: #fff; background: var(--gold); padding: 5px; color: #000;">Master Deed</h4>
-            <p class="tagline">Physical Notarized Sovereign Origin Record</p>
-            <span class="price">$12,500</span>
-            <a href="#" class="btn-order" style="background: var(--gold); color: #000;">CLAIM SOVEREIGNTY</a>
+
+        <div class="tier-card">
+            <span class="tag">Legacy</span>
+            <h4>The Sovereign Umbrella</h4>
+            <p style="font-size: 12px; color: #888;">Full integration of LLC/IP into the Master Vault.</p>
+            <div class="price">$3,500</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
         </div>
+
+        <div class="tier-card">
+            <span class="tag">Connectivity</span>
+            <h4>The Node-Link Integration</h4>
+            <p style="font-size: 12px; color: #888;">Direct API mapping into the IBINGOD Directory.</p>
+            <div class="price">$2,200</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
+        </div>
+
+        <div class="tier-card">
+            <span class="tag">Intelligence</span>
+            <h4>The Vexilla Tech-Health Audit</h4>
+            <p style="font-size: 12px; color: #888;">Deep-scan certification of digital assets.</p>
+            <div class="price">$1,800</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
+        </div>
+
+        <div class="tier-card">
+            <span class="tag">Broadcasting</span>
+            <h4>The Face of the Network</h4>
+            <p style="font-size: 12px; color: #888;">Media Syndication across SKTVSN and SKDMD.</p>
+            <div class="price">$5,500</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
+        </div>
+
+        <div class="tier-card">
+            <span class="tag">Sovereignty</span>
+            <h4>The Master Deed of Origin</h4>
+            <p style="font-size: 12px; color: #888;">Physical, notarized Master Deed stored in Vault.</p>
+            <div class="price">$12,500</div>
+            <a href="#" class="buy-btn">PURCHASE RECORD</a>
+        </div>
+
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 IBINGOD TRADE INC. IM/EX | SOVEREIGN HOLDER OF ALL LLCs, IPs, TRADEMARKS, AND METHODS</p>
-    <p>VERIFIED ARCHITECTURAL INFRASTRUCTURE | SECURED BY VEXILLA AITS</p>
+<footer style="text-align: center; padding: 100px; color: #444; border-top: 1px solid #111;">
+    <p style="letter-spacing: 5px;">IBINGOD TRADE INC. IM/EX | THE BACKBONE</p>
+    <p style="font-size: 10px; margin-top: 20px;">ALL RIGHTS RESERVED &copy; 2026</p>
 </footer>
-
-<script>
-    const searchInput = document.getElementById('directorySearch');
-    const cards = document.querySelectorAll('.link-card');
-
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        cards.forEach(card => {
-            const content = card.getAttribute('data-tags');
-            card.style.display = content.includes(term) ? 'block' : 'none';
-        });
-    });
-</script>
 
 </body>
 </html>
