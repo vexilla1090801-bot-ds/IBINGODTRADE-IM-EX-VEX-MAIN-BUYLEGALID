@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASTAISTARS | Mega-Registry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #000; }
+        
+        /* Mega-Hanging Logo Effect */
+        .mega-logo {
+            height: 300px; /* h-75 equivalent */
+            width: auto;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+            z-index: 60;
+            position: relative;
+            top: 110px; /* Deep hang below the h-30 bar */
+        }
+        .mega-logo:hover {
+            transform: scale(1.02) translateY(15px);
+            filter: drop-shadow(0 0 50px rgba(0, 229, 255, 0.5));
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #00e5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 glass-panel">
+        <div class="max-w-7xl mx-auto px-6 h-32 flex items-center justify-between">
+            
+            <a href="index.html" class="flex items-center">
+                <img src="castaistars.png" alt="CASTAISTARS" class="mega-logo">
+            </a>
+            
+            <div class="hidden md:flex gap-12 text-[11px] font-black uppercase tracking-[0.5em] text-gray-500">
+                <a href="backlot.html" class="hover:text-cyan-400 transition-colors">Registry</a>
+                <a href="directors.html" class="hover:text-cyan-400 transition-colors">Directors</a>
+                <a href="creators.html" class="hover:text-cyan-400 transition-colors">Creators</a>
+            </div>
+
+            <a href="mailto:castaistars@outlook.com?subject=Beta Access Request" class="bg-cyan-500 text-black px-12 py-4 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-white transition-all shadow-lg">
+                Beta Access
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col items-center justify-start pt-[450px] pb-32">
+        <div class="absolute inset-0 z-0 opacity-30">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-cyan-900/20 rounded-full mix-blend-screen filter blur-[180px]"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-6xl px-6">
+            <h1 class="text-7xl md:text-[10rem] font-black tracking-tighter mb-12 leading-[0.75] uppercase">
+                FAME IS <span class="text-gradient">SYNTHETIC.</span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-gray-400 mb-16 font-light max-w-3xl mx-auto tracking-widest uppercase italic">
+                The New Standard in AI Talent Management.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+                <a href="backlot.html" class="bg-white text-black px-16 py-7 rounded-2xl font-black text-2xl uppercase tracking-tighter hover:bg-cyan-400 transition-all text-center">
+                    Enter Backlot
+                </a>
+                <a href="creators.html" class="border-4 border-gray-900 hover:border-cyan-400 px-16 py-7 rounded-2xl font-black text-2xl uppercase tracking-tighter transition-all text-center">
+                    Register Star
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-40 border-t border-gray-900">
+        <div class="grid md:grid-cols-3 gap-16">
+            <div class="space-y-6">
+                <h3 class="text-cyan-400 font-black uppercase tracking-widest text-sm">01. Continuity</h3>
+                <p class="text-gray-500 text-lg">Consistent visual datasets for cinematic productions.</p>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-cyan-400 font-black uppercase tracking-widest text-sm">02. Audio Soul</h3>
+                <p class="text-gray-500 text-lg">Integrated Voice IDs secured via Solomon Kin Records.</p>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-cyan-400 font-black uppercase tracking-widest text-sm">03. IP Rights</h3>
+                <p class="text-gray-500 text-lg">Transparent royalty splits for the modern AI creator.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-32 border-t border-gray-900 text-center">
+        <img src="castaistars.png" alt="CASTAISTARS" class="h-32 w-auto mx-auto mb-12 opacity-20 hover:opacity-100 transition-opacity">
+        <p class="text-gray-800 font-black uppercase tracking-[1.5em] text-[12px]">Solomon Kin Records LLC &bull; Philadelphia</p>
+        <a href="mailto:castaistars@outlook.com" class="text-gray-600 hover:text-cyan-400 text-xs mt-4 block uppercase tracking-widest">castaistars@outlook.com</a>
+    </footer>
+
+</body>
+</html>
