@@ -3,247 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBINGOD TRADE INC. IM/EX | Global Sovereign Command</title>
+    <title>IBINGOD TRADE INC. IM/EX | Sovereign Command</title>
     <style>
         :root {
             --gold: #D4AF37;
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --bg: #050505;
-            --card-bg: rgba(20, 20, 20, 0.8);
-            --cyan-accent: #00f2ff;
+            --gold-glow: rgba(212, 175, 55, 0.6);
+            --bg: #030303;
+            --nav-bg: rgba(0, 0, 0, 0.9);
+            --card-glass: rgba(15, 15, 15, 0.85);
         }
 
         body {
             background-color: var(--bg);
             color: #fff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            padding-top: 70px; /* Space for fixed nav */
         }
 
-        /* Sovereign Scan-line Effect */
-        body::before {
-            content: " ";
+        /* --- NAVIGATION BAR --- */
+        nav {
             position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 9999;
-            background-size: 100% 4px, 3px 100%;
-            pointer-events: none;
+            top: 0; width: 100%;
+            height: 70px;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--gold);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
         }
 
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+
+        .auth-tools { display: flex; align-items: center; gap: 20px; }
+        .cart-icon { font-size: 18px; cursor: pointer; color: var(--gold); }
+
+        /* --- HEADER & LOGO --- */
         header {
-            height: 80vh;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
             background: radial-gradient(circle at center, #111 0%, #000 100%);
-            border-bottom: 1px solid var(--gold);
         }
 
-        .logo-container img {
-            max-width: 850px;
-            width: 90%;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.1));
+        .waves-bg {
+            position: absolute;
+            bottom: 0; width: 100%; height: 100px;
+            background: url('https://raw.githubusercontent.com/google/material-design-icons/master/png/action/settings/materialicons/48dp/1x/baseline_settings_black_48dp.png'); /* Placeholder for wave pattern */
+            opacity: 0.1;
+            animation: moveWaves 10s linear infinite;
         }
 
-        .logo-container img:hover {
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 30px var(--gold-glow));
+        @keyframes moveWaves { from { background-position-x: 0; } to { background-position-x: 1000px; } }
+
+        .logo-main {
+            max-width: 800px; width: 85%;
+            z-index: 10;
+            transition: 0.8s cubic-bezier(0.2, 1, 0.2, 1);
         }
 
-        .container { max-width: 1400px; margin: -100px auto 50px auto; padding: 20px; position: relative; z-index: 10; }
-
-        /* Advanced Search */
-        .search-wrapper {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #333;
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
+        .logo-main:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 25px var(--gold-glow));
         }
 
-        .search-bar {
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid var(--gold);
-            color: var(--gold);
-            font-size: 1.5rem;
-            outline: none;
-            padding: 10px;
-        }
+        /* --- DIRECTORY SECTION --- */
+        .container { max-width: 1400px; margin: auto; padding: 40px 20px; }
 
-        /* Registry Grid */
         .registry-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .link-card {
-            background: var(--card-bg);
+            background: var(--card-glass);
             border: 1px solid #222;
-            padding: 25px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 2px; /* Professional sharp edges */
             transition: 0.4s;
             position: relative;
-            overflow: hidden;
         }
 
         .link-card:hover {
             border-color: var(--gold);
-            transform: translateY(-10px);
-            background: rgba(30, 30, 30, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        .link-card::after {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            transition: 0.5s;
-        }
+        .tag { border: 1px solid var(--gold); color: var(--gold); padding: 2px 6px; font-size: 10px; text-transform: uppercase; }
 
-        .link-card:hover::after { left: 100%; }
-
-        .tag {
-            color: var(--gold);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid var(--gold);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        /* Services Section */
+        /* --- SERVICE VAULT (BOTTOM) --- */
         #service-vault {
             background: #000;
-            padding: 100px 0;
-            text-align: center;
+            padding: 100px 20px;
+            border-top: 2px solid var(--gold);
         }
 
         .pkg-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            justify-content: center;
-            margin-top: 50px;
+            max-width: 1200px;
+            margin: auto;
         }
 
         .pkg-card {
-            width: 280px;
-            padding: 40px;
             border: 1px solid #1a1a1a;
-            background: linear-gradient(145deg, #0a0a0a, #111);
-            border-radius: 20px;
-        }
-
-        .pkg-card h4 { color: var(--gold); font-size: 1.3rem; }
-
-        .btn-action {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 12px;
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(180deg, #050505 0%, #111 100%);
             transition: 0.3s;
         }
 
-        .btn-action:hover {
+        .pkg-card:hover { border-color: var(--gold); }
+        .pkg-card h4 { color: var(--gold); letter-spacing: 2px; margin-bottom: 20px; }
+        .buy-btn {
             background: var(--gold);
             color: #000;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 12px;
         }
+
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <img src="ibingodtradelogomain.png" alt="IBINGOD TRADE INC. IM/EX">
+<nav>
+    <div class="nav-links">
+        <a href="#directory">Registry</a>
+        <a href="#service-vault">Vault Services</a>
+        <a href="#">The Vault (About)</a>
+        <a href="#">The Port (Contact)</a>
     </div>
-    <h2 style="font-weight: 200; letter-spacing: 8px; color: var(--gold);">SOVEREIGN ECOSYSTEM</h2>
+    <div class="auth-tools">
+        <a href="#" style="color: #fff; text-decoration: none; font-size: 12px;">SIGN IN</a>
+        <a href="#" style="background: var(--gold); color: #000; padding: 8px 15px; text-decoration: none; font-size: 12px; font-weight: bold;">REGISTER</a>
+        <span class="cart-icon">🛒</span>
+    </div>
+</nav>
+
+<header>
+    <div class="waves-bg"></div>
+    <img src="ibingodtradelogomain.png" alt="IBINGOD TRADE INC. IM/EX" class="logo-main">
+    <h1 style="font-weight: 200; letter-spacing: 12px; color: var(--gold); margin-top: 30px;">SOVEREIGN COMMAND</h1>
 </header>
 
-<div class="container">
-    <div class="search-wrapper">
-        <input type="text" id="searchInput" class="search-bar" placeholder="ACCESS REGISTRY DATA...">
-    </div>
-
-    <div class="registry-grid" id="registry">
-        <div class="link-card" data-name="vexilla aits tech infrastructure">
+<div class="container" id="directory">
+    <h2 style="border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 40px;">GLOBAL AFFILIATE REGISTRY</h2>
+    
+    <div class="registry-grid">
+        <div class="link-card">
             <span class="tag">Main Command</span>
             <h3 style="margin: 15px 0;">Vexilla AITS</h3>
-            <p style="color: #888; font-size: 14px;">Global Infrastructure & Tech Health Monitoring System.</p>
-            <a href="https://nehemiahbrown007.github.io/vexilla-support/" class="btn-action">OPEN PORTAL</a>
+            <p style="color: #888; font-size: 13px;">Enterprise Infrastructure & Global Tech Health Monitoring.</p>
+            <a href="https://nehemiahbrown007.github.io/vexilla-support/" style="color: var(--gold); text-decoration: none; font-size: 12px;">ACCESS PORTAL →</a>
         </div>
-
-        <div class="link-card" data-name="solomon kin records media music">
+        <div class="link-card">
             <span class="tag">Record Keeping</span>
             <h3 style="margin: 15px 0;">Solomon Kin Records</h3>
-            <p style="color: #888; font-size: 14px;">Master Media Group, Licensing & IP Vault.</p>
-            <a href="https://skrs-ai.github.io/LicensingCatalog/" class="btn-action">OPEN PORTAL</a>
+            <p style="color: #888; font-size: 13px;">Master Media Group, Licensing & Sovereign IP Vault.</p>
+            <a href="https://skrs-ai.github.io/LicensingCatalog/" style="color: var(--gold); text-decoration: none; font-size: 12px;">ACCESS PORTAL →</a>
         </div>
-
         </div>
 </div>
 
 <section id="service-vault">
-    <h2 style="color: var(--gold); letter-spacing: 4px;">ADDITIONAL AFFILIATE SERVICES</h2>
+    <h2 style="text-align: center; color: var(--gold); letter-spacing: 5px; margin-bottom: 60px;">ADDITIONAL ECOSYSTEM SERVICES</h2>
     <div class="pkg-grid">
+        
         <div class="pkg-card">
-            <h4>The Originator’s Shield</h4>
-            <p>VSSN Identity Registration</p>
-            <div style="font-size: 24px; margin: 20px 0;">$499</div>
-            <a href="#" class="btn-action">REQUEST VSSN</a>
+            <h4>The Voyager’s VSSN</h4>
+            <p style="font-size: 14px; color: #aaa;">Digital Persona Identity Birthright & Registry.</p>
+            <div style="font-size: 24px; margin: 15px 0;">$499.00</div>
+            <a href="#" class="buy-btn">ADD TO CART</a>
         </div>
+
         <div class="pkg-card">
             <h4>The Authoritative Seal</h4>
-            <p>AI Authorship Certification</p>
-            <div style="font-size: 24px; margin: 20px 0;">$1,250</div>
-            <a href="#" class="btn-action">CERTIFY IP</a>
+            <p style="font-size: 14px; color: #aaa;">AI Authorship Certification (The "AI Slot" Method).</p>
+            <div style="font-size: 24px; margin: 15px 0;">$1,250.00</div>
+            <a href="#" class="buy-btn">ADD TO CART</a>
         </div>
+
         <div class="pkg-card">
             <h4>The Bridge-Builder</h4>
-            <p>Cultural Affiliation Verification</p>
-            <div style="font-size: 24px; margin: 20px 0;">$850</div>
-            <a href="#" class="btn-action">VERIFY HISTORY</a>
+            <p style="font-size: 14px; color: #aaa;">Cultural Affiliation & Foreign Trade Verification.</p>
+            <div style="font-size: 24px; margin: 15px 0;">$850.00</div>
+            <a href="#" class="buy-btn">ADD TO CART</a>
         </div>
+
+        <div class="pkg-card">
+            <h4>The Trade Anchor</h4>
+            <p style="font-size: 14px; color: #aaa;">Verification of Physical & Digital Occupational Mastery.</p>
+            <div style="font-size: 24px; margin: 15px 0;">$600.00</div>
+            <a href="#" class="buy-btn">ADD TO CART</a>
+        </div>
+
     </div>
 </section>
 
-<footer style="text-align: center; padding: 60px; color: #444; background: #000; border-top: 1px solid #111;">
-    <p>&copy; 2026 IBINGOD TRADE INC. IM/EX | ALL RIGHTS RESERVED</p>
-    <p style="font-size: 10px; letter-spacing: 2px;">SOVEREIGN HOLDER OF ALL LLCS, IPS, TRADEMARKS, AND METHODS</p>
+<footer style="background: #000; padding: 80px 20px; text-align: center; border-top: 1px solid #111;">
+    <p style="font-size: 12px; color: #444; letter-spacing: 2px;">IBINGOD TRADE INC. IM/EX | THE SOVEREIGN BACKBONE</p>
+    <p style="font-size: 10px; color: #333; margin-top: 10px;">ALL RIGHTS RESERVED &copy; 2026</p>
 </footer>
-
-<script>
-    // Real-time Search Logic
-    const searchInput = document.getElementById('searchInput');
-    const cards = document.querySelectorAll('.link-card');
-
-    searchInput.addEventListener('input', (e) => {
-        const value = e.target.value.toLowerCase();
-        cards.forEach(card => {
-            const name = card.getAttribute('data-name');
-            if (name.includes(value)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
