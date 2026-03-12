@@ -3,165 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBINGOD TRADES INC. IM/EX | Master Ecosystem Owner</title>
+    <title>IBINGOD TRADE INC. IM/EX | Global Sovereign Command</title>
     <style>
         :root {
             --gold: #D4AF37;
-            --slate: #1a1a1b;
-            --glow: #00f2ff;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --bg: #050505;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --cyan-accent: #00f2ff;
         }
+
         body {
-            background-color: #000;
+            background-color: var(--bg);
             color: #fff;
-            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Sovereign Scan-line Effect */
+        body::before {
+            content: " ";
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+
         header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 60px 20px;
-            border-bottom: 2px solid var(--gold);
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            border-bottom: 1px solid var(--gold);
         }
-        .logo-main {
-            max-width: 800px;
-            width: 100%;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+
+        .logo-container img {
+            max-width: 850px;
+            width: 90%;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.1));
         }
-        .container { max-width: 1200px; margin: auto; padding: 20px; }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+
+        .logo-container img:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 30px var(--gold-glow));
         }
-        .service-card {
-            background: #111;
-            border: 1px solid #333;
+
+        .container { max-width: 1400px; margin: -100px auto 50px auto; padding: 20px; position: relative; z-index: 10; }
+
+        /* Advanced Search */
+        .search-wrapper {
+            background: var(--card-bg);
             padding: 30px;
-            text-align: center;
-            transition: 0.3s;
-            border-radius: 8px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
         }
-        .service-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
-        }
-        .price { color: var(--gold); font-size: 1.5rem; font-weight: bold; display: block; margin: 15px 0; }
 
-        /* Directory Table */
-        .directory-section { margin-top: 80px; }
-        table {
+        .search-bar {
             width: 100%;
-            border-collapse: collapse;
-            background: #0a0a0a;
-            border: 1px solid #222;
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #222;
-        }
-        th { background: #111; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-        tr:hover { background: #1a1a1a; }
-        .tag {
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            background: #333;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.5rem;
+            outline: none;
+            padding: 10px;
         }
 
-        .cta-btn {
+        /* Registry Grid */
+        .registry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 10px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .link-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transition: 0.5s;
+        }
+
+        .link-card:hover::after { left: 100%; }
+
+        .tag {
+            color: var(--gold);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Services Section */
+        #service-vault {
+            background: #000;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .pkg-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .pkg-card {
+            width: 280px;
+            padding: 40px;
+            border: 1px solid #1a1a1a;
+            background: linear-gradient(145deg, #0a0a0a, #111);
+            border-radius: 20px;
+        }
+
+        .pkg-card h4 { color: var(--gold); font-size: 1.3rem; }
+
+        .btn-action {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
             background: var(--gold);
             color: #000;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="ibingodtradelogomain.png" alt="IBINGOD TRADES INC. IM/EX" class="logo-main">
-    <h1>SOVEREIGN ECOSYSTEM AUTHORITY</h1>
-    <p>The Vault. The Engine. The Bridge. The Structure.</p>
+    <div class="logo-container">
+        <img src="ibingodtradelogomain.png" alt="IBINGOD TRADE INC. IM/EX">
+    </div>
+    <h2 style="font-weight: 200; letter-spacing: 8px; color: var(--gold);">SOVEREIGN ECOSYSTEM</h2>
 </header>
 
 <div class="container">
-    
-    <section id="services">
-        <h2 style="text-align: center; color: var(--gold);">CERTIFICATION & IDENTITY SERVICES</h2>
-        <p style="text-align: center;">Lifetime Records for the Digital Era. No Renewals. Permanent Protection.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>VSSN Registration</h3>
-                <p>Virtual Social Security Number for Digital Personas and AI Entities.</p>
-                <span class="price">$499.00</span>
-                <a href="#" class="cta-btn">Register Character</a>
-            </div>
-            <div class="service-card">
-                <h3>AI Author Certification</h3>
-                <p>Proprietary "AI Slot" Method verification for legal Copyright protection.</p>
-                <span class="price">$1,250.00</span>
-                <a href="#" class="cta-btn">Certify Work</a>
-            </div>
-            <div class="service-card">
-                <h3>Sovereign Sheltering</h3>
-                <p>Integration of LLCs, IPs, and Trademarks into the IBINGOD Master Umbrella.</p>
-                <span class="price">$3,500.00</span>
-                <a href="#" class="cta-btn">Integrate Asset</a>
-            </div>
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" class="search-bar" placeholder="ACCESS REGISTRY DATA...">
+    </div>
+
+    <div class="registry-grid" id="registry">
+        <div class="link-card" data-name="vexilla aits tech infrastructure">
+            <span class="tag">Main Command</span>
+            <h3 style="margin: 15px 0;">Vexilla AITS</h3>
+            <p style="color: #888; font-size: 14px;">Global Infrastructure & Tech Health Monitoring System.</p>
+            <a href="https://nehemiahbrown007.github.io/vexilla-support/" class="btn-action">OPEN PORTAL</a>
         </div>
-    </section>
 
-    <hr style="border: 0; border-top: 1px solid #333; margin: 60px 0;">
+        <div class="link-card" data-name="solomon kin records media music">
+            <span class="tag">Record Keeping</span>
+            <h3 style="margin: 15px 0;">Solomon Kin Records</h3>
+            <p style="color: #888; font-size: 14px;">Master Media Group, Licensing & IP Vault.</p>
+            <a href="https://skrs-ai.github.io/LicensingCatalog/" class="btn-action">OPEN PORTAL</a>
+        </div>
 
-    <section class="directory-section">
-        <h2 style="color: var(--gold);">GLOBAL AFFILIATE DIRECTORY</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Company / Org Name</th>
-                    <th>Industry</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Portal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Vexilla AITS, INC. </strong></td>
-                    <td><span class="tag">Tech</span></td>
-                    <td>Non-Profit</td>
-                    <td><span style="color: #0f0;">Verified</span></td>
-                    <td><a href="https://nehemiahbrown007.github.io/vexilla-support/" style="color: var(--glow);">Visit</a></td>
-                </tr>
-                <tr>
-                    <td><strong>Cast AI Stars, INC. </strong></td>
-                    <td><span class="tag">Identity</span></td>
-                    <td>Company</td>
-                    <td><span style="color: #0f0;">Main Command</span></td>
-                    <td><a href="#" style="color: var(--glow);">Portal</a></td>
-                </tr>
-                </tbody>
-        </table>
-    </section>
-
+        </div>
 </div>
 
-<footer style="text-align: center; padding: 40px; color: #666; font-size: 0.8rem;">
-    <p>&copy; 2003 - 2026 IBINGOD TRADE INC. IM/EX. All Rights Reserved.</p>
-    <p>Sovereign Holder of all LLCs, IPs, Trademarks, and Proprietary Methods.</p>
+<section id="service-vault">
+    <h2 style="color: var(--gold); letter-spacing: 4px;">ADDITIONAL AFFILIATE SERVICES</h2>
+    <div class="pkg-grid">
+        <div class="pkg-card">
+            <h4>The Originator’s Shield</h4>
+            <p>VSSN Identity Registration</p>
+            <div style="font-size: 24px; margin: 20px 0;">$499</div>
+            <a href="#" class="btn-action">REQUEST VSSN</a>
+        </div>
+        <div class="pkg-card">
+            <h4>The Authoritative Seal</h4>
+            <p>AI Authorship Certification</p>
+            <div style="font-size: 24px; margin: 20px 0;">$1,250</div>
+            <a href="#" class="btn-action">CERTIFY IP</a>
+        </div>
+        <div class="pkg-card">
+            <h4>The Bridge-Builder</h4>
+            <p>Cultural Affiliation Verification</p>
+            <div style="font-size: 24px; margin: 20px 0;">$850</div>
+            <a href="#" class="btn-action">VERIFY HISTORY</a>
+        </div>
+    </div>
+</section>
+
+<footer style="text-align: center; padding: 60px; color: #444; background: #000; border-top: 1px solid #111;">
+    <p>&copy; 2026 IBINGOD TRADE INC. IM/EX | ALL RIGHTS RESERVED</p>
+    <p style="font-size: 10px; letter-spacing: 2px;">SOVEREIGN HOLDER OF ALL LLCS, IPS, TRADEMARKS, AND METHODS</p>
 </footer>
+
+<script>
+    // Real-time Search Logic
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.link-card');
+
+    searchInput.addEventListener('input', (e) => {
+        const value = e.target.value.toLowerCase();
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            if (name.includes(value)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
-
-
-
